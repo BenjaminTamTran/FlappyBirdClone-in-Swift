@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
+    var backgroundMusic = AVAudioPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let audioFileLocationURL = NSBundle.mainBundle() .URLForResource("MiningbyMoonlight", withExtension: "mp3")
+        backgroundMusic = try! AVAudioPlayer.init(contentsOfURL: audioFileLocationURL!)
+        backgroundMusic .play()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
