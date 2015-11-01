@@ -8,13 +8,22 @@
 
 import UIKit
 import AVFoundation
+import SpriteKit
 
 class ViewController: UIViewController {
     var backgroundMusic = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Configure the view.
+        let skView = self.view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         
+        // Create and configure the scene.
+        let scene = MainScene(size: skView.bounds.size)
+        scene.scaleMode = SKSceneScaleMode.AspectFill
+        skView .presentScene(scene)
     }
     
     override func viewDidAppear(animated: Bool) {
