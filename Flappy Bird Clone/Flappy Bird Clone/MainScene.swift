@@ -29,6 +29,8 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
     var resetSound = SKAction()
     var swapSound = SKAction()
     var movePipesAndRemove = SKAction()
+    var score: Int = 0
+    var scoreLabelNode = SKLabelNode()
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -126,6 +128,21 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
         let spawnThenDelayForever = SKAction .repeatActionForever(spwanThenDelay)
         self .runAction(spawnThenDelayForever)
         
+        // score label
+        scoreLabelNode = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+        scoreLabelNode.position = CGPointMake(CGRectGetMidX(self.frame), 3 * self.frame.size.height / 4)
+        scoreLabelNode.zPosition = 20
+        scoreLabelNode.fontSize = 50
+        scoreLabelNode.text = "0"
+        self .addChild(scoreLabelNode)
+        
+        let copyRightLabelNode = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+        copyRightLabelNode.position = CGPointMake(CGRectGetMidX(self.frame), 10)
+        copyRightLabelNode.zPosition = 21
+        copyRightLabelNode.fontSize = 12
+        copyRightLabelNode.text = "© 2015 Benjamin Tam Tran studio. All rights reserved."
+        self .addChild(copyRightLabelNode)
+        
         resetSound = SKAction .playSoundFileNamed("Chomp.wav", waitForCompletion: false)
         swapSound = SKAction .playSoundFileNamed("Ka-Ching", waitForCompletion: false)
     }
@@ -200,6 +217,9 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
         canRestart = false
         
         moving.speed = 1
+        
+        score = 0;
+        scoreLabelNode.text = "0";
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -215,7 +235,12 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
     // SKPhysicsContactDelegate's methods
     func didBeginContact(contact: SKPhysicsContact) {
         if moving.speed > 0 {
-            if contact.bodyA.categoryBitMask & worldCategory == worldCategory || contact.bodyB.categoryBitMask & worldCategory == worldCategory{
+            if contact.bodyA.categoryBitMask & scoreCategory == scoreCategory || contact.bodyB.categoryBitMask & scoreCategory == scoreCategory {
+                score++
+                scoreLabelNode.text = "\(score)"
+                scoreLabelNode .runAction(SKAction.sequence([SKAction .scaleTo(1.5, duration: 0.1), SKAction .scaleTo(1.0, duration: 0.1)]))
+            }
+            else {
                 self .runAction(resetSound)
                 moving.speed = 0
                 bird.physicsBody?.collisionBitMask = worldCategory
