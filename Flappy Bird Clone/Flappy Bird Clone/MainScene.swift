@@ -50,7 +50,7 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
         
         // create bird node
         bird = SKSpriteNode(texture: birdTexture1)
-        bird .setScale(3.0)
+        bird .setScale(2.0)
         bird.position = CGPointMake(self.frame.size.width / 4, CGRectGetMidY(self.frame))
         bird.runAction(flap)
         
@@ -183,8 +183,8 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: NSTimeInterval) {
         if( moving.speed > 0 ) {
-            bird.physicsBody?.velocity.dy
             bird.zRotation = clamp( -1, max: 0.5, value: (bird.physicsBody?.velocity.dy)! * ( (bird.physicsBody?.velocity.dy)! < 0 ? 0.003 : 0.001 ) )
+//            print("bird.zRotation \(bird.zRotation)")
         }
     }
     
