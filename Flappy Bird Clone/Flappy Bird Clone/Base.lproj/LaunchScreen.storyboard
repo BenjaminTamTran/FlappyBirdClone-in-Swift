@@ -36,21 +36,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird1.png" translatesAutoresizingMaskIntoConstraints="NO" id="MrL-dA-zWl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird2.png" translatesAutoresizingMaskIntoConstraints="NO" id="MrL-dA-zWl">
                                 <rect key="frame" x="122" y="265" width="105" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="uPM-CG-59o"/>
                                     <constraint firstAttribute="height" constant="70" id="yOL-Rn-aGq"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird2.png" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-jM-vhh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird1.png" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-jM-vhh">
                                 <rect key="frame" x="247" y="265" width="105" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="3jN-Pe-U9P"/>
                                     <constraint firstAttribute="height" constant="70" id="YCL-t9-q0a"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird1.png" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-eq-rPO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird2.png" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-eq-rPO">
                                 <rect key="frame" x="372" y="265" width="105" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="BCV-18-OTu"/>

@@ -171,20 +171,61 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    // SKPhysicsContactDelegate's methods
-    func didBeginContact(contact: SKPhysicsContact) {
-//        print("didBeginContact")
-        self .runAction(resetSound)
+    func clamp(min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
+        if value > max {
+            return max
+        } else if value < min {
+            return min
+        } else {
+            return value
+        }
     }
     
-    func didEndContact(contact: SKPhysicsContact) {
+    override func update(currentTime: NSTimeInterval) {
+        if( moving.speed > 0 ) {
+            bird.physicsBody?.velocity.dy
+            bird.zRotation = clamp( -1, max: 0.5, value: (bird.physicsBody?.velocity.dy)! * ( (bird.physicsBody?.velocity.dy)! < 0 ? 0.003 : 0.001 ) )
+        }
+    }
+    
+    func resetScene() {
+        bird.position = CGPointMake(self.frame.size.width / 4, CGRectGetMidY(self.frame))
+        bird.physicsBody?.velocity = CGVectorMake(0, 0)
+        bird.physicsBody?.collisionBitMask = worldCategory | pipeCategory
+        bird.speed = 1.0
+        bird.zRotation = 0.0
         
+        pipes .removeAllChildren()
+        
+        canRestart = false
+        
+        moving.speed = 1
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        bird.position = CGPointMake(self.frame.size.width / 4, CGRectGetMidY(self.frame))
-        bird.physicsBody?.velocity = CGVectorMake(0, 0)
-        bird.physicsBody?.applyImpulse(CGVectorMake(0, 4))
+        if moving.speed > 0 {
+            bird.physicsBody?.velocity = CGVectorMake(0, 0)
+            bird.physicsBody?.applyImpulse(CGVectorMake(0, 4))
+            self .runAction(swapSound)
+        } else if canRestart {
+            resetScene()
+        }
+    }
+    
+    // SKPhysicsContactDelegate's methods
+    func didBeginContact(contact: SKPhysicsContact) {
+        if moving.speed > 0 {
+            if contact.bodyA.categoryBitMask & worldCategory == worldCategory || contact.bodyB.categoryBitMask & worldCategory == worldCategory{
+                self .runAction(resetSound)
+                moving.speed = 0
+                bird.physicsBody?.collisionBitMask = worldCategory
+                let actionRotate = SKAction .rotateByAngle(CGFloat(M_PI) * bird.position.y * CGFloat(0.01), duration: Double(bird.position.y) * 0.003)
+                bird .runAction(actionRotate, completion: { () -> Void in
+                    self.bird.speed = 0
+                    self.runAction(self.resetSound)
+                })
+                canRestart = true
+            }
+        }
     }
 }
