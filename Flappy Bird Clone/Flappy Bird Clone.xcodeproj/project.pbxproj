@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F860F1171BEC261F00B691E2 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = F860F1151BEC261F00B691E2 /* fire.sks */; };
+		F860F1181BEC261F00B691E2 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = F860F1161BEC261F00B691E2 /* spark.png */; };
 		F8F51DC31BE60415004325C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F51DC21BE60415004325C4 /* AppDelegate.swift */; };
 		F8F51DC51BE60415004325C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F51DC41BE60415004325C4 /* ViewController.swift */; };
 		F8F51DC81BE60415004325C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8F51DC61BE60415004325C4 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F860F1151BEC261F00B691E2 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
+		F860F1161BEC261F00B691E2 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		F8F51DBF1BE60415004325C4 /* Flappy Bird Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flappy Bird Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F51DC21BE60415004325C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8F51DC41BE60415004325C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				F8F51DD11BE60415004325C4 /* Info.plist */,
 				F8F51DC91BE60415004325C4 /* Flappy_Bird_Clone.xcdatamodeld */,
 				F8F51E111BE60967004325C4 /* MainScene.swift */,
+				F860F1151BEC261F00B691E2 /* fire.sks */,
+				F860F1161BEC261F00B691E2 /* spark.png */,
 			);
 			path = "Flappy Bird Clone";
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				F8F51DD01BE60415004325C4 /* LaunchScreen.storyboard in Resources */,
 				F8F51E041BE608C6004325C4 /* Skyline.png in Resources */,
 				F8F51E021BE608C6004325C4 /* Pipe1.png in Resources */,
+				F860F1181BEC261F00B691E2 /* spark.png in Resources */,
 				F8F51E001BE608C6004325C4 /* Bird2.png in Resources */,
 				F8F51E051BE608C6004325C4 /* Chomp.wav in Resources */,
 				F8F51DCD1BE60415004325C4 /* Assets.xcassets in Resources */,
@@ -325,6 +332,7 @@
 				F8F51E071BE608C6004325C4 /* MiningbyMoonlight.mp3 in Resources */,
 				F8F51DC81BE60415004325C4 /* Main.storyboard in Resources */,
 				F8F51E061BE608C6004325C4 /* Ka-Ching.wav in Resources */,
+				F860F1171BEC261F00B691E2 /* fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +591,7 @@
 				F8F51DEC1BE60415004325C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8F51DED1BE60415004325C4 /* Build configuration list for PBXNativeTarget "Flappy Bird CloneTests" */ = {
 			isa = XCConfigurationList;
@@ -591,6 +600,7 @@
 				F8F51DEF1BE60415004325C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8F51DF01BE60415004325C4 /* Build configuration list for PBXNativeTarget "Flappy Bird CloneUITests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +609,7 @@
 				F8F51DF21BE60415004325C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

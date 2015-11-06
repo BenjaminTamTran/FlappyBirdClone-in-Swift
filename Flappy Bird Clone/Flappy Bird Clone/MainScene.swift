@@ -31,6 +31,7 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
     var movePipesAndRemove = SKAction()
     var score: Int = 0
     var scoreLabelNode = SKLabelNode()
+    var fireParticle = SKEmitterNode()
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -213,7 +214,7 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
         bird.zRotation = 0.0
         
         pipes .removeAllChildren()
-        
+        bird .removeChildrenInArray([fireParticle])
         canRestart = false
         
         moving.speed = 1
@@ -241,7 +242,15 @@ class MainScene : SKScene, SKPhysicsContactDelegate {
                 scoreLabelNode .runAction(SKAction.sequence([SKAction .scaleTo(1.5, duration: 0.1), SKAction .scaleTo(1.0, duration: 0.1)]))
             }
             else {
+                // Fire particle node
+                let path = NSBundle.mainBundle().pathForResource("fire", ofType: "sks")
+                fireParticle = NSKeyedUnarchiver.unarchiveObjectWithFile(path!) as! SKEmitterNode
+                fireParticle.name = "fireParticle"
+                fireParticle.targetNode = bird.scene
+                bird.addChild(fireParticle)
+                
                 self .runAction(resetSound)
+                
                 moving.speed = 0
                 bird.physicsBody?.collisionBitMask = worldCategory
                 let actionRotate = SKAction .rotateByAngle(CGFloat(M_PI) * bird.position.y * CGFloat(0.01), duration: Double(bird.position.y) * 0.003)
